@@ -4,18 +4,37 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Mario Game</title>
-    <link rel='stylesheet' href='main.css'>
+    <link rel='stylesheet' href="styles.css">
 </head>
 <body>
-    <section>
-        <h1>Mario Game Demo</h1>
-    </section>
-        
-    <section>
 
-    </section>
-    <section>
-        <p>Controls: <br> Arrow Keys: Move Left/Right <br> Down Arrow: Enter Pipe</p>
-    </section>
+    <h1>Mario Game Demo</h1>
+
+    <div class="game-viewport">
+
+        <div class="hud">
+            <p>Score: <span id="score"></span>0</p>
+            <p>Level: <span id="level"></span>1</p>
+            <p>Lives: <span id="lives"></span>2</p>
+        </div>
+
+        <div id="world">
+            <div id="mario"></div>
+        </div>
+
+        <div class="controls">
+            <p>Controls:</p>
+            <p>Arrow Keys: Move Left/Right </p>
+            <p>Down Arrow: Enter Pipe</p>
+        </div>
+    </div>
+
+            <div id="game-over">
+            <h2 id="game-over-title">GAME OVER</h2>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-button">Play Again</button>
+        </div>
+
+    <script src="app.js"></script>
 </body>
 </html>

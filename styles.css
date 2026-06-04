@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #5c94fc, #87ceeb);
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.game-viewport {
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0, 4px, 8px, 000;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 800px;
+}
+
+#world {
+    width: 800px;
+    height: 400px;
+    background: linear-gradient(to bottom, #5c94FC 80%, #228B22 80%, #228B22 100%);
+    overflow: hidden;
+}
+
+#mario {
+    position: absolute; /*??*/
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/Wb1qfhK.png');
+    z-index: 100;
+}
+
+#mario.big {
+    width: 40px;
+    height: 40px;
+    background-image: url('https://i.imgur.com/Wb1qfhK.png');
+}
+
+.platform {
+    background-image: url('https://i.imgur.com/M6rwarW.png');
+    width: 20px;
+    height: 20px;
+}
+
+.platform.ground {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/pogC9x5.png');
+}
+
+.platform.blue {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/fVscIbn.png');
+}
+
+.enemy {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/KP03fR9.png');
+}
+
+.enemy.purple {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/SvV4ueD.png');
+}
+
+.coin {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/wbKxhcd.png');
+    animation: coinSpin 1s linear infinite; /*THIS WILL BE DEFINED*/
+}
+
+@keyframes coinSpin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.surprise.block {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/gesQ1KP.png');
+}
+
+.surprise-block.hit {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/bdrLpi6.png');
+}
+
+.pipe {
+    width: 40px;
+    height: 40px;
+}
+
+.pipe-top {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/bdrLpi6.png');
+}
+
+.pipe-top-right {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/bdrLpi6.png');
+}
+
+.pipe-bottom {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/bdrLpi6.png');
+}
+
+.pipe-bottom-right {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/bdrLpi6.png');
+}
+
+.controls {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#game-over {
+    position: absolute;
+    top: 40%;
+    border: 3px solid #fff;
+    color: #fff;
+    padding: 30px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 100;
+}
+
+#restart-button {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px;
+}
+
+#restart-button:hover {
+    background-color: #ff5252;
+}
