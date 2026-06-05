@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 
-.game-viewport {
+.game-container {
     background: #fff;
     border: 3px solid #000;
     border-radius: 10px;
@@ -28,7 +28,8 @@ body {
     min-width: 800px;
 }
 
-#world {
+#game-area {
+    position: relative;
     width: 800px;
     height: 400px;
     background: linear-gradient(to bottom, #5c94FC 80%, #228B22 80%, #228B22 100%);
@@ -50,6 +51,7 @@ body {
 }
 
 .platform {
+    position: absolute;
     background-image: url('https://i.imgur.com/M6rwarW.png');
     width: 20px;
     height: 20px;
@@ -61,13 +63,19 @@ body {
     background-image: url('https://i.imgur.com/pogC9x5.png');
 }
 
+.platform.floating {
+    width: 20px;
+    height: 20px;
+    background-image: url('https://i.imgur.com/pogC9x5.png');
+}
+
 .platform.blue {
     width: 20px;
     height: 20px;
     background-image: url('https://i.imgur.com/fVscIbn.png');
 }
 
-.enemy {
+.enemy.brown {
     width: 20px;
     height: 20px;
     background-image: url('https://i.imgur.com/KP03fR9.png');
@@ -152,6 +160,7 @@ body {
     border-radius: 10px;
     text-align: center;
     z-index: 100;
+    display: none;
 }
 
 #restart-button {
