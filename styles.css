@@ -32,7 +32,9 @@ body {
     position: relative;
     width: 800px;
     height: 400px;
-    background: linear-gradient(to bottom, #5c94FC 80%, #228B22 80%, #228B22 100%);
+    background: url(images/villageBackground.png);
+    background-size: cover;
+    /*background: linear-gradient(to bottom, #5c94FC 80%, #228B22 80%, #228B22 100%);*/
     overflow: hidden;
 }
 
@@ -40,7 +42,9 @@ body {
     position: absolute; /*??*/
     width: 20px;
     height: 20px;
-    background-image: url('https://i.imgur.com/Wb1qfhK.png');
+    background-image: url(images/mushroomSoldier.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     z-index: 100;
 }
 
@@ -78,7 +82,9 @@ body {
 .enemy.brown {
     width: 20px;
     height: 20px;
-    background-image: url('https://i.imgur.com/KP03fR9.png');
+    background-image: url(images/mushroomSoldier.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .enemy.purple {
