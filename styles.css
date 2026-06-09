@@ -40,17 +40,17 @@ body {
 
 #mario {
     position: absolute; /*??*/
-    width: 20px;
-    height: 20px;
-    background-image: url(images/mushroomSoldier.png);
+    width: 60px;
+    height: 60px;
+    background-image: url(images/protagonist.png);
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 100;
 }
 
 #mario.big {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     background-image: url('https://i.imgur.com/Wb1qfhK.png');
 }
 
@@ -80,8 +80,8 @@ body {
 }
 
 .enemy.brown {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background-image: url(images/mushroomSoldier.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -94,9 +94,11 @@ body {
 }
 
 .coin {
-    width: 20px;
-    height: 20px;
-    background-image: url('https://i.imgur.com/wbKxhcd.png');
+    width: 60px;
+    height: 60px;
+    background-image: url(images/cookie.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     animation: coinSpin 1s linear infinite; /*THIS WILL BE DEFINED*/
 }
 
@@ -109,10 +111,13 @@ body {
     }
 }
 
-.surprise.block {
-    width: 20px;
-    height: 20px;
-    background-image: url('https://i.imgur.com/gesQ1KP.png');
+.surprise-block {
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(images/box.png);
+    z-index: 1000; /*troubleshooting*/
 }
 
 .surprise-block.hit {

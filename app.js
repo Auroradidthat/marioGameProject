@@ -189,6 +189,7 @@ level.coins.forEach((coinData, index) => {
             top: blockData.y + 'px'
 
         })
+        
         gameArea.appendChild(block)
         gameObjects.surpriseBlocks.push ({
            element: block,
@@ -202,7 +203,6 @@ level.coins.forEach((coinData, index) => {
 
         })
     })
-
 }
 
 function updateElementPosition(element, x, y) {
