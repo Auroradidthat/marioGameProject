@@ -18,11 +18,11 @@ let gameState = {
 let player = {
     element: document.getElementById('mario'),
     x: 50,
-    y: 300,
+    y: 339,
     width: 20,
     height: 20,
     velocityX: 0,
-    velocityy: 0,
+    velocityY: 0,
     grounded: false,
     big: false,
     bigTimer: 0
@@ -63,7 +63,7 @@ const levels = [
         { x: 350, y: 220, type: "mushroom"}
        ],
        pipes: [
-        { x: 750, y: 300 }
+        { x: 750, y: 320 }
        ]
     },
     //LEVEL 2
@@ -95,7 +95,7 @@ const levels = [
             {x: 400, y: 220, type: "mushroom"}
         ],
         pipes: [
-            {x: 750, y: 300}
+            {x: 750, y: 320}
         ]
     }
 ]
@@ -103,7 +103,7 @@ const levels = [
 //INITIALIZE GAME
 function initGame() {
     loadlevel(gameState.level -1)
-    //gameloop()
+    gameLoop()
 }
 
 function loadlevel(levelIndex) {
@@ -119,8 +119,8 @@ const level = levels[levelIndex]
 const gameArea = document.getElementById('game-area')
 
 //reset player
-player.x - 50
-player.y = 300
+player.x = 50
+player.y = 329
 player.velocityX = 0
 player.velocityY = 0
 player.big = false
@@ -130,7 +130,7 @@ updateElementPosition(player.element, player.x, player.y)
 
 // create platforms
 level.platforms.forEach((platformData, index) => {
-    const platform = createElement('div', 'platform ${platformData.type}', {
+    const platform = createElement('div', `platform ${platformData.type}`, {
         left: platformData.x + 'px',
         top: platformData.y + 'px', 
         width: platformData.width + 'px', 
@@ -203,6 +203,33 @@ level.coins.forEach((coinData, index) => {
 
         })
     })
+
+    //Create Pipes
+level.pipes.forEach((pipeData, index) => {
+    const pipe = createElement('div', 'pipe', {
+        left: pipeData.x + 'px',
+        top: pipeData.y + 'px'
+    })
+
+
+const pipeTopLeft = createElement('div', 'pipe-top')
+const pipeTopRight = createElement('div', 'pipe-top-right')
+const pipeBottomLeft = createElement('div', 'pipe-bottom-left')
+const pipebottomRight = createElement('div', 'pipe-bottom-right')
+
+pipe.append(pipeTopLeft, pipeTopRight, pipeBottomLeft, pipebottomRight)
+
+gameArea.appendChild(pipe)
+gameObjects.pipes.push ({
+    element: pipe,
+    x: pipeData.x,
+    y: pipeData.y,
+    width: 40,
+    height: 40,
+    id: 'pipe-' + index
+})
+})
+
 }
 
 function updateElementPosition(element, x, y) {
@@ -263,7 +290,56 @@ function gameLoop() {
 }
 
 //update game logic
-function update() {}
+function update() {
+    console.log(gameState.keys)
+    //HANDLES LEFT + RIGHT
+    if (gameState.keys['ArrowLeft'] || gameState.keys['keyA']) {
+        player.velocityX = -MOVE_SPEED
+    } else if (gameState.keys['ArrowRight'] || gameState.keys['KeyD']) {
+        player.velocityX = MOVE_SPEED
+    } else {
+        player.velocityX *= 0.8
+    }
+
+    //HANDLE JUMPING
+    if (gameState.keys['Space'] && player.grounded) {
+        player.velocityY = JUMP_FORCE
+        player.grounded = false
+    }
+
+    //APPLY GRAVITY 
+    if (!player.grounded) {
+        player.velocityY += GRAVITY
+    }
+
+    //UPDATE PLAYER POSITION
+    player.x += player.velocityX
+    player.y += player.velocityY
+
+    //PLATFORM COLLISION
+    for (let platform of gameObjects.platforms) {
+        if (checkCollision(player, platform)) {
+            if (player.velocityY > 0) {
+                //FALLING
+                player.y = platform.y - player.height
+                player.velocityY = 0
+                player.grounded = true
+            }
+
+        }
+    }
+
+    updateElementPosition(player.element, player.x, player.y)
+
+
+}
+
+function checkCollision(element1, element2) {
+    return element1.x < element2.x + element2.width &&
+        element1.x + element1.width > element2.x &&
+        element1.y < element2.y + element2.height &&
+        element1.y + element1.height > element2.y
+}
 
 // START GAME
 initGame()
